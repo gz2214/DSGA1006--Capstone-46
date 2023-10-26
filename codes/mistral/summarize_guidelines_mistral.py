@@ -16,7 +16,7 @@ prefix=""" ### Instruction: Summarize this passage as short as possible
 """
 suffix="""Answer:
 """
-inputs = [prefix + g +suffix for g in guidelines['ICD11 Guidelines']]
+inputs=[prefix +' '+d+' \n'+g +'\n'+suffix for d,g in zip(guidelines['Correct Diagnosis'],guidelines['ICD11 Guidelines'])]
 for i,n in enumerate(inputs): 
     print(i)
     encodeds = tokenizer(n, return_tensors="pt", add_special_tokens=True)
@@ -24,5 +24,8 @@ for i,n in enumerate(inputs):
     generated_ids = model.generate(**model_inputs, max_new_tokens=1000, do_sample=True, pad_token_id=tokenizer.eos_token_id)
     decoded = tokenizer.batch_decode(generated_ids) 
     summary.append(decoded[0].replace("<s>", "").replace("</s>", "").split('Answer:',1)[1].strip())
+    print(decoded[0].replace("<s>", "").replace("</s>", "").split('Answer:',1)[1].strip())
 guidelines['summary']=summary
+guidelines['summary'][8]=guidelines['ICD11 Guidelines'][8]
 guidelines.to_csv('../../ICD-11 Guidelines.csv')
+print(summary)
