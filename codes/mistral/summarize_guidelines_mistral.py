@@ -2,12 +2,12 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import pandas as pd 
 import os
-import re
+
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:1024"
 model_id = "mistralai/Mistral-7B-Instruct-v0.1"
 model = AutoModelForCausalLM.from_pretrained(model_id, device_map="auto",offload_folder="offload",torch_dtype=torch.float16)
 tokenizer = AutoTokenizer.from_pretrained(model_id)
-guidelines=pd.read_csv('../ICD-11 Guidelines.csv')
+guidelines=pd.read_csv('../../ICD-11 Guidelines.csv')
 
 device = "cuda:0"
 
@@ -17,7 +17,7 @@ prefix=""" ### Instruction: Summarize this passage as short as possible
 suffix="""Answer:
 """
 inputs = [prefix + g +suffix for g in guidelines['ICD11 Guidelines']]
-for i,n in enumerate(inputs):
+for i,n in enumerate(inputs): 
     print(i)
     encodeds = tokenizer(n, return_tensors="pt", add_special_tokens=True)
     model_inputs = encodeds.to(device)
@@ -25,4 +25,4 @@ for i,n in enumerate(inputs):
     decoded = tokenizer.batch_decode(generated_ids) 
     summary.append(decoded[0].replace("<s>", "").replace("</s>", "").split('Answer:',1)[1].strip())
 guidelines['summary']=summary
-guidelines.to_csv('../ICD-11 Guidelines.csv')
+guidelines.to_csv('../../ICD-11 Guidelines.csv')
