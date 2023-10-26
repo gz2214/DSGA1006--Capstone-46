@@ -1,5 +1,5 @@
-Correct Diagnosis,ICD11 Guidelines
-Generalized Anxiety Disorder,"Essential (Required) Features:
+,Unnamed: 0,Correct Diagnosis,ICD11 Guidelines,summary
+0,0,Generalized Anxiety Disorder,"Essential (Required) Features:
   
  Marked symptoms of anxiety accompanied by either:
  general apprehensiveness that is not restricted to any particular environmental circumstance (i.e., “free-floating anxiety”); or
@@ -43,8 +43,8 @@ Generalized Anxiety Disorder,"Essential (Required) Features:
   
  Some individuals with Generalized Anxiety Disorder may only report chronic somatic anxiety and a feeling of nonspecific dread without being able to articulate specific worry content.
   
- Behavioural changes such as avoidance, frequent need for reassurance (especially in children), and procrastination may be seen. These behaviours typically represent an effort to reduce apprehension or prevent untoward events from occurring."
-Panic Disorder,"Essential (Required) Features:
+ Behavioural changes such as avoidance, frequent need for reassurance (especially in children), and procrastination may be seen. These behaviours typically represent an effort to reduce apprehension or prevent untoward events from occurring.",What is Generalized Anxiety Disorder?
+1,1,Panic Disorder,"Essential (Required) Features:
   
  Recurrent unexpected panic attacks that are not restricted to particular stimuli or situations. Panic attacks are discrete episodes of intense fear or apprehension also characterized by the rapid and concurrent onset of several characteristic symptoms. These symptoms may include, but are not limited to, the following:
  Palpitations or increased heart rate
@@ -91,8 +91,8 @@ Panic Disorder,"Essential (Required) Features:
   
  Some individuals with Panic Disorder experience nocturnal panic attacks, that is, waking from sleep in a state of panic.
   
- Although the pattern of symptoms (e.g., mainly respiratory, nocturnal, etc.), the severity of the anxiety, and the extent of avoidance behaviours are variable, Panic Disorder is one of the most impairing of the Anxiety Disorders. Individuals often present repeatedly to emergency units and may undergo a range of unnecessary and costly special medical investigations despite repeated negative findings."
-Agoraphobia,"Essential (Required) Features:
+ Although the pattern of symptoms (e.g., mainly respiratory, nocturnal, etc.), the severity of the anxiety, and the extent of avoidance behaviours are variable, Panic Disorder is one of the most impairing of the Anxiety Disorders. Individuals often present repeatedly to emergency units and may undergo a range of unnecessary and costly special medical investigations despite repeated negative findings.","### A brief summary: What are the essential (required) features of a panic disorder? Essential (required) features of a panic disorder include recurrent unexpected panic attacks, a persistent concern or worry about their recurrence or negative significance, behaviours intended to avoid their recurrence, significant impairment in functioning, and symptoms that include palpitations, sweating, trembling, shortness of breath, chills, chest pain, nausea or abdominal distress, dizziness or lightheadedness, tingling or lack of sensation in extremities, depersonalization, fear of losing control, going mad or imminent death."
+2,2,Agoraphobia,"Essential (Required) Features:
   
  Marked and excessive fear or anxiety that occurs in, or in anticipation of, multiple situations where escape might be difficult or help might not be available, such as using public transportation, being in crowds, being outside the home alone, in shops, theatres, or standing in line.
   
@@ -132,8 +132,10 @@ Agoraphobia,"Essential (Required) Features:
   
  Individuals with Agoraphobia may employ a variety of different behavioural strategies if required to enter feared situations. One such ‘safety’ behaviour is to require the presence of a companion. Other strategies may include going to certain places only at particular times of day or carrying specific materials (e.g., medications, towels) in case of the feared negative outcome. These strategies may change over the course of the disorder and from one occasion to the next. For example, on different occasions in the same situation an individual may insist on having a companion, endure the situation with distress, or use various safety behaviours to cope with his or her anxiety.
   
- Although the pattern of symptoms, the severity of the anxiety, and the extent of avoidance are variable, Agoraphobia is one of the most impairing of the Anxiety Disorders to the extent that some individuals become completely housebound, which has an impact on opportunities for employment, seeking medical care, and the ability to form and maintain relationships."
-Specific Phobia,"Essential (Required) Features:
+ Although the pattern of symptoms, the severity of the anxiety, and the extent of avoidance are variable, Agoraphobia is one of the most impairing of the Anxiety Disorders to the extent that some individuals become completely housebound, which has an impact on opportunities for employment, seeking medical care, and the ability to form and maintain relationships.","### Summary:
+
+Agoraphobia is ""an excessive or debilitating fear, or persistent avoiding or enduring of places or situations where escape might be impractical or help unavailable"". The individual consistently experiences fear or anxiety about these situations due to a sense of danger or fear of specific negative outcomes. The situations are actively avoided, are entered only under specific circumstances, or else are endured with intense fear or anxiety. The symptoms persist for an extended period of time and result in significant distress or impairment. There are differences with other mental disorders, such as Social Anxiety Disorder and Posttraumatic Stress Disorder. Individuals may employ a variety of behavioral strategies to cope with the fear. Agoraphobia can severely affect an individual's quality of life, making it an impairing Anxiety Disorder."
+3,3,Specific Phobia,"Essential (Required) Features:
   
  Marked and excessive fear or anxiety that consistently occurs when exposed to one or more specific objects or situations (e.g., proximity to certain kinds of animals, heights, closed spaces, sight of blood or injury) and that is out of proportion to the actual danger posed by the specific object or situation.
   
@@ -163,8 +165,10 @@ Specific Phobia,"Essential (Required) Features:
   
  Some individuals with Specific Phobia may report a history of having observed another person (e.g., caregiver) react with fear or anxiety when confronted by an object or situation resulting in vicarious learning of a fear response to the object or situation or direct negative experience with an object or situation (e.g., having been bitten by a dog). However, previous negative experiences (direct or vicarious) are not necessary for the development of the disorder.
   
- Some individuals report that their fear or anxiety for an object or situation is not excessive. As such, clinicians must consider whether the reported fear, anxiety, or avoidance behaviour is disproportionate to the reasonable risk of harm taking into consideration both accepted cultural norms as well as the specific environmental conditions that the individual is normally subjected to (e.g., fear of darkness may be justified in a neighborhood where assaults are common at night)."
-Social Anxiety Disorder,"Essential (Required) Features:
+ Some individuals report that their fear or anxiety for an object or situation is not excessive. As such, clinicians must consider whether the reported fear, anxiety, or avoidance behaviour is disproportionate to the reasonable risk of harm taking into consideration both accepted cultural norms as well as the specific environmental conditions that the individual is normally subjected to (e.g., fear of darkness may be justified in a neighborhood where assaults are common at night).","A Summary of Specific Phobia:
+
+Specific Phobia is defined as excessive and unreasonable fear or anxiety about a specific object or situation. It can be about animals, heights, confined spaces, or other objects. This fear or anxiety is persistent and results in significant distress and impairment. To distinguish it from other disorders, Specific Phobia involves fear of specific stimuli rather than feared outcomes or social situations. The fear of blood-injury phobias, medical/dental procedures, or fainting can cause vasovagal responses. Specific Phobia is not limited to animals or heights: many objects can be feared without significant physiological arousal. Individuals can learn their fears through vicarious experiences. However, previous negative experiences are not necessary for development. It varies whether fear is excessive or reasonable based on cultural norms and the environment. Overall, Specific Phobia is defined by the presence of an excessive, persistent and unreasonable fear that is associated with significant distress and impairment."
+4,4,Social Anxiety Disorder,"Essential (Required) Features:
   
  Marked and excessive fear or anxiety that occurs consistently in one or more social situations such as social interactions (e.g., having a conversation), being observed (e.g., while eating or drinking), or performing in front of others (e.g., giving a speech).
   
@@ -206,8 +210,8 @@ Social Anxiety Disorder,"Essential (Required) Features:
   
  Individuals with Social Phobia are at higher risk for developing Substance Use Disorders, which may arise subsequent to use for the purposes of attenuating anxiety symptoms in social situations.
   
- Individuals may not view their fear or anxiety in response to social situations as excessive. As such, clinical judgment should be applied to determine whether the reported fear, anxiety, and/or avoidance behaviour is disproportionate to what the social situation warrants taking into consideration both accepted cultural norms as well as the specific environmental conditions that the individual is normally subjected to (e.g., fear of interacting with peers may be appropriate if the individual is being bullied)."
-Separation Anxiety Disorder,"Essential (Required) Features:
+ Individuals may not view their fear or anxiety in response to social situations as excessive. As such, clinical judgment should be applied to determine whether the reported fear, anxiety, and/or avoidance behaviour is disproportionate to what the social situation warrants taking into consideration both accepted cultural norms as well as the specific environmental conditions that the individual is normally subjected to (e.g., fear of interacting with peers may be appropriate if the individual is being bullied).","Social Anxiety Disorder is characterized by excessive and persistent fear or anxiety in social situations, which interferes with functioning. Only considered if fear and"
+5,5,Separation Anxiety Disorder,"Essential (Required) Features:
   
  Marked and excessive fear or anxiety about separation from those individuals to whom the person is attached (i.e., has a deep affective bond with). In children and youth, attachment figures are typically parents, caregivers, or other family members, whereas in adults, they are most often a romantic partner or children. Manifestations of fear or anxiety related to separation depend on the individual’s developmental level, but may include:
  Persistent thoughts that harm or some other untoward event (e.g., being kidnapped) will lead to separation.
@@ -253,8 +257,8 @@ Separation Anxiety Disorder,"Essential (Required) Features:
   
  Although Separation Anxiety Disorder may exhibit a lifelong course with onset in childhood, a significant proportion of adult individuals with Separation Anxiety Disorder do not recall a childhood onset.
   
- Separation Anxiety Disorder in childhood is frequently associated with a parenting style that interferes with the development of autonomy and self-mastery expected for that person’s cultural context (e.g., parent does not permit child to independently engage in basic activities of daily living such as dressing and bathing)."
-Selective Mutism,"Essential (Required) Features:
+ Separation Anxiety Disorder in childhood is frequently associated with a parenting style that interferes with the development of autonomy and self-mastery expected for that person’s cultural context (e.g., parent does not permit child to independently engage in basic activities of daily living such as dressing and bathing).","Separation Anxiety Disorder is a mental disorder characterized by excessive and unrealistic fear or anxiety about separation from those individuals to whom one is deeply attached, typically including a romantic partner or children in adulthood or parents, caregivers, or other family members in childhood. It involves the fear of actual or imagined harm coming from separation. Symptoms include reluctance or refusal to go to school or work, excessive distress before and after sleep, and frequent nightmares about separation. The disorder persists for an extended period and causes significant distress and impairment. It is differentiated from other disorders such as normality, agoraphobia, panic disorder, social anxiety disorder, posttraumatic stress disorder, generalized anxiety disorder, and depressive disorders, as well as other disorders such as oppositional defiant disorder and personality disorders. Many individuals with separation anxiety disorder also have comorbid conditions."
+6,6,Selective Mutism,"Essential (Required) Features:
   
  Consistent selectivity in speaking, such that a child demonstrates adequate language competence in specific social situations, typically at home, but consistently fails to speak in others, typically at school.
   
@@ -286,8 +290,8 @@ Selective Mutism,"Essential (Required) Features:
   
  Selective Mutism is associated with severe impairment in academic and social functioning that can manifest as inability to complete expected school work, not getting personal needs met, inability to initiate or reciprocate social interactions with peers, and/or becoming the target of bullying.
   
- Social anxiety, withdrawal, and avoidance in Selective Mutism may be related to temperamental factors such as behavioural inhibition and negative affectivity."
-Other Anxiety and Fear-Related Disorder,"Essential (Required) Features:
+ Social anxiety, withdrawal, and avoidance in Selective Mutism may be related to temperamental factors such as behavioural inhibition and negative affectivity.","Translate the passage into your own words briefly: Selective mutism is a communication disorder where a child fails to speak in specific social situations typically at school but can speak at home. The condition lasts at least one month and is not due to a lack of language knowledge or comfort. Developmental speech and language disorders involve impairments in expressive language across all social situations, while Autism Spectrum Disorder and disorders of intellectual development affect language and social communication. Selective mutism may interfere with direct assessment of expressive language but can be diagnosed with help from informants who know the child well. Symptoms are related to social anxiety and oppositional behavior. Comorbidity with anxiety disorders and severe impairment in academic and social functioning are common."
+7,7,Other Anxiety and Fear-Related Disorder,"Essential (Required) Features:
   
  The clinical presentation does not satisfy the definitional requirements of any other disorder in the Anxiety and Fear-Related Disorders grouping.
   
@@ -301,5 +305,5 @@ Other Anxiety and Fear-Related Disorder,"Essential (Required) Features:
   
  The symptoms and behaviours are not explained by another medical disorder that is not classified under Mental and Behavioural Disorders.
   
- The symptoms cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning."
-Unspecified Anxiety and Fear-Related Disorder,(No specific diagnostic guidance provided.)
+ The symptoms cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.","The passage describes the essential (required) features of a Mental and Behavioural Disorder within the Anxiety and Fear-Related Disorders grouping. The disorder does not fit any other disorder's definition, the symptoms are not explained by another disorder, the clinical presentation is similar to other Anxiety and Fear-Related Disorders, the symptoms are not developmentally appropriate, the symptoms are in excess of what is normal in the individual's cultural context, and the symptoms are not caused by another medical disorder unrelated to Mental and Behavioural Disorders. The symptoms cause significant distress or impairment in an important area of functioning."
+8,8,Unspecified Anxiety and Fear-Related Disorder,(No specific diagnostic guidance provided.),No specific diagnostic guidance was provided in the passage.
