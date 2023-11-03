@@ -70,11 +70,11 @@ def generate_with_memory(
             streamer.put(input_ids)
 
 
-PROMPT_PREFIX = "You are an AI assistant. User will you give you a task. Your goal is to explain your answer as detailed as you can.\n"
+PROMPT_PREFIX = "You are an AI assistant. User will you give you a task. Your goal is to complete the task as faithfully as you can.\n"
 
 
 def construct_question_prompt(question: str):
-    prompt = f"\nAnswer the following question and explain your choice by relating to the provided article.\nQuestion: {question}\nAnswer: "
+    prompt = f"\nAnswer the following questions and explain your choice by relating the vignette to the guidelines, and also explain why other options are not chosen, by referencing the guidelines. You must explain in detail why they do not relate to other disorders.\nQuestion: {question}\nAnswer: "
     return prompt
 
 
@@ -128,6 +128,7 @@ Q9  Unspecified Anxiety and Fear-Related Disorder
 
 Essential (Required) Features: (No specific diagnostic guidance provided.)
 
+
 Vignette:
 JV is a 22-year-old female university student. She presented to her university’s counselling center because of difficulty she is anticipating in her public speaking class.
 
@@ -149,7 +150,7 @@ JV is an only child whose parents had her relatively late in life and live in a 
 fot_memory = load_to_memory(model, tokenizer, PROMPT_PREFIX + article)
 
 initial_prompt = """
-Based on the vignette provided, reference the provided guidelines (Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9) and choose the vignette that matches the disorder among the following disorders: Generalized Anxiety Disorder, Panic Disorder, Agoraphobia, Specific Phobia, Social Anxiety Disorder, Separation Anxiety Disorder, Selective Mutism, Other Anxiety and Fear-Related Disorder, and Unspecified Anxiety and Fear-Related Disorder. Explain your choice by referring to the symptoms of the disorder and how they relate to the vignette. Also explain in detail why they do not relate to the other disorders.
+Based on the vignette provided, reference the provided guidelines (Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9) and choose among the following disorders: Generalized Anxiety Disorder, Panic Disorder, Agoraphobia, Specific Phobia, Social Anxiety Disorder, Separation Anxiety Disorder, Selective Mutism, Other Anxiety and Fear-Related Disorder, and Unspecified Anxiety and Fear-Related Disorder.
 """
 prompt = construct_question_prompt(initial_prompt)
 

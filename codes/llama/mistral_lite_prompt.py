@@ -1,91 +1,22 @@
-import numpy as np
+from transformers import AutoModelForCausalLM, AutoTokenizer
+import transformers
 import torch
-from transformers import LlamaTokenizer, AutoModelForCausalLM, TextStreamer, PreTrainedModel, PreTrainedTokenizer
-from typing import List, Optional
 
-MODEL_PATH = (
-    "syzymon/long_llama_3b_instruct"
+model_id = "amazon/MistralLite"
+
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+model = AutoModelForCausalLM.from_pretrained(model_id,
+                                             torch_dtype=torch.bfloat16,
+                                             use_flash_attention_2=True,
+                                             device_map="auto",)
+pipeline = transformers.pipeline(
+    "text-generation",
+    model=model,
+    tokenizer=tokenizer,
+    temperature=0.1,
 )
-TOKENIZER_PATH = MODEL_PATH
-# to fit into colab GPU we will use reduced precision
-TORCH_DTYPE = torch.bfloat16
 
-if torch.cuda.is_available():
-    device = torch.device("cuda")
-else:
-    device = torch.device("cpu")
-
-tokenizer = LlamaTokenizer.from_pretrained(TOKENIZER_PATH)
-
-model = AutoModelForCausalLM.from_pretrained(
-    MODEL_PATH,
-    torch_dtype=TORCH_DTYPE,
-    device_map=device,
-    trust_remote_code=True,
-    # mem_attention_grouping is used
-    # to trade speed for memory usage
-    # for details, see the section Additional configuration
-    mem_attention_grouping=(1, 2048),
-)
-model.eval()
-
-@torch.no_grad()
-def load_to_memory(model: PreTrainedModel, tokenizer: PreTrainedTokenizer, text: str):
-    tokenized_data = tokenizer(text, return_tensors="pt")
-    input_ids = tokenized_data.input_ids
-    input_ids = input_ids.to(model.device)
-    # torch.manual_seed(0)
-    output = model(input_ids=input_ids)
-    memory = output.past_key_values
-    return memory
-
-
-@torch.no_grad()
-def generate_with_memory(
-    model: PreTrainedModel, tokenizer: PreTrainedTokenizer, memory, prompt: str, temperature=0.1
-):
-    tokenized_data = tokenizer(prompt, return_tensors="pt")
-    input_ids = tokenized_data.input_ids
-    input_ids = input_ids.to(model.device)
-
-    streamer = TextStreamer(tokenizer, skip_prompt=False)
-
-    new_memory = memory
-
-    stop = False
-    while not stop:
-        output = model(input_ids, past_key_values=new_memory)
-        new_memory = output.past_key_values
-        assert len(output.logits.shape) == 3
-        assert output.logits.shape[0] == 1
-        last_logit = output.logits[[0], [-1], :]
-        dist = torch.distributions.Categorical(logits=last_logit / temperature)
-        next_token = dist.sample()
-        if next_token[0] == tokenizer.eos_token_id:
-            streamer.put(next_token[None, :])
-            streamer.end()
-            stop = True
-        else:
-            input_ids = next_token[None, :]
-            streamer.put(input_ids)
-
-
-PROMPT_PREFIX = "You are an AI assistant. User will you give you a task. Your goal is to explain your answer as detailed as you can.\n"
-
-
-def construct_question_prompt(question: str):
-    prompt = f"\nAnswer the following question and explain your choice by relating to the provided article.\nQuestion: {question}\nAnswer: "
-    return prompt
-
-
-def ask_model(model: PreTrainedModel, tokenizer: PreTrainedTokenizer, prompt: str, memory, seed=0):
-    tokenized_data = tokenizer(prompt, return_tensors="pt")
-    input_ids = tokenized_data.input_ids
-    input_ids = input_ids.to(model.device)
-    torch.manual_seed(seed)
-    generate_with_memory(model, tokenizer, memory, prompt)
-
-article = """
+full_prompt = """
 Q1 Generalized Anxiety Disorder
 
 Essential (Required) Features: Marked symptoms of anxiety accompanied by either:
@@ -142,15 +73,16 @@ JV reports that she has a group of friends, but has never been “the talkative 
 Additional Background Information
 
 JV is an only child whose parents had her relatively late in life and live in a nearby town. She describes her family life as “quiet but normal.” She denies using any drugs, but states that she occasionally drinks one or two alcoholic beverages with her boyfriend on the weekends. A recent physical examination revealed no abnormalities.
-
-
 """
+prompt = f"<|prompter|> {full_prompt} </s><|assistant|>"
 
-fot_memory = load_to_memory(model, tokenizer, PROMPT_PREFIX + article)
-
-initial_prompt = """
-Based on the vignette provided, reference the provided guidelines (Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9) and choose the vignette that matches the disorder among the following disorders: Generalized Anxiety Disorder, Panic Disorder, Agoraphobia, Specific Phobia, Social Anxiety Disorder, Separation Anxiety Disorder, Selective Mutism, Other Anxiety and Fear-Related Disorder, and Unspecified Anxiety and Fear-Related Disorder. Explain your choice by referring to the symptoms of the disorder and how they relate to the vignette. Also explain in detail why they do not relate to the other disorders.
-"""
-prompt = construct_question_prompt(initial_prompt)
-
-ask_model(model, tokenizer, prompt, fot_memory)
+sequences = pipeline(
+    prompt,
+    max_new_tokens=400,
+    do_sample=False,
+    return_full_text=False,
+    num_return_sequences=1,
+    eos_token_id=tokenizer.eos_token_id,
+)
+for seq in sequences:
+    print(f"{seq['generated_text']}")
