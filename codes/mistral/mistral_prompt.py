@@ -1,9 +1,16 @@
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 device = "cuda:0" # the device to load the model onto
 
-model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1", torch_dtype=torch.float16)
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_use_double_quant=True,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_compute_dtype=torch.bfloat16
+)
+
+model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1", quantization_config=bnb_config, torch_dtype=torch.float16)
 tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
 
 prompt = """
@@ -62,13 +69,18 @@ messages = [
 encodeds = tokenizer.apply_chat_template(messages, return_tensors="pt")
 
 model_inputs = encodeds.to(device)
-model.to(device)
+# model.to(device)
 
-generated_ids = model.generate(model_inputs,
-                               max_new_tokens=1000, 
-                               do_sample=True,
-                               temperature=0.1,
-                               pad_token_id=tokenizer.eos_token_id)
+try:
+    generated_ids = model.generate(model_inputs,
+                                max_new_tokens=1000, 
+                                do_sample=True,
+                                temperature=0.1,
+                                pad_token_id=tokenizer.eos_token_id)
 
-decoded = tokenizer.batch_decode(generated_ids)
-print(decoded[0])
+    decoded = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)
+    print("\n".join(decoded[0].split("[/INST]")[1:]).strip())
+
+except RuntimeError as e:
+    print(e)
+    print("Try again with a smaller max_new_tokens value")
